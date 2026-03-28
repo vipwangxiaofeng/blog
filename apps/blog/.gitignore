@@ -1,0 +1,17 @@
+# .nuxt
+.nuxt
+
+# node_modules
+node_modules
+
+# dist
+dist
+
+# output
+.output
+
+# logs
+*.log
+
+# OS
+.DS_Store
