@@ -8,8 +8,6 @@ tags:
   - 教程
 ---
 
-# AI Agent入门：构建你的第一个智能体
-
 AI Agent（智能体）是2025年最热门的AI应用形态。本文将带你从零理解Agent的概念，并动手构建一个简单的智能体。
 
 ## 什么是AI Agent？
@@ -55,54 +53,54 @@ npm install langchain @langchain/openai
 ### 定义工具
 
 ```typescript
-import { DynamicTool } from 'langchain/tools'
+import { DynamicTool } from "langchain/tools";
 
 // 创建一个搜索工具
 const searchTool = new DynamicTool({
-  name: 'search',
-  description: '搜索互联网获取信息',
+  name: "search",
+  description: "搜索互联网获取信息",
   func: async (query: string) => {
     // 调用搜索API
-    const results = await search(query)
-    return JSON.stringify(results)
+    const results = await search(query);
+    return JSON.stringify(results);
   },
-})
+});
 
 // 创建一个计算工具
 const calculatorTool = new DynamicTool({
-  name: 'calculator',
-  description: '执行数学计算',
+  name: "calculator",
+  description: "执行数学计算",
   func: async (expression: string) => {
     // 安全地执行计算
-    const result = eval(expression)
-    return result.toString()
+    const result = eval(expression);
+    return result.toString();
   },
-})
+});
 ```
 
 ### 创建Agent
 
 ```typescript
-import { ChatOpenAI } from '@langchain/openai'
-import { initializeAgentExecutorWithOptions } from 'langchain/agents'
+import { ChatOpenAI } from "@langchain/openai";
+import { initializeAgentExecutorWithOptions } from "langchain/agents";
 
 const model = new ChatOpenAI({
-  modelName: 'gpt-4',
+  modelName: "gpt-4",
   temperature: 0,
-})
+});
 
 const executor = await initializeAgentExecutorWithOptions(
   [searchTool, calculatorTool],
   model,
   {
-    agentType: 'chat-conversational-react-description',
-  }
-)
+    agentType: "chat-conversational-react-description",
+  },
+);
 
 // 运行Agent
 const result = await executor.invoke({
-  input: '搜索最新的AI新闻，然后告诉我一共有多少条',
-})
+  input: "搜索最新的AI新闻，然后告诉我一共有多少条",
+});
 ```
 
 ## Agent设计模式
@@ -114,24 +112,24 @@ ReAct（Reasoning + Acting）是最常用的Agent模式：
 ```typescript
 // Agent的思考过程
 interface ReActStep {
-  thought: string    // 思考
-  action: string     // 行动
-  observation: string // 观察结果
+  thought: string; // 思考
+  action: string; // 行动
+  observation: string; // 观察结果
 }
 
 // 示例执行流程
 const steps: ReActStep[] = [
   {
-    thought: '用户想了解天气，我需要搜索天气信息',
+    thought: "用户想了解天气，我需要搜索天气信息",
     action: 'search("北京今天天气")',
-    observation: '北京今天晴，温度15-25度',
+    observation: "北京今天晴，温度15-25度",
   },
   {
-    thought: '我已经获取到天气信息，可以回答用户了',
-    action: 'finish',
-    observation: '北京今天天气晴朗，温度15到25度，适合外出。',
+    thought: "我已经获取到天气信息，可以回答用户了",
+    action: "finish",
+    observation: "北京今天天气晴朗，温度15到25度，适合外出。",
   },
-]
+];
 ```
 
 ### Plan-and-Execute模式
@@ -140,42 +138,36 @@ const steps: ReActStep[] = [
 
 ```typescript
 interface Plan {
-  steps: string[]
-  currentStep: number
+  steps: string[];
+  currentStep: number;
 }
 
 // 规划阶段
 const plan: Plan = {
   steps: [
-    '搜索2025年AI发展趋势',
-    '整理关键趋势列表',
-    '为每个趋势添加详细描述',
-    '生成最终报告',
+    "搜索2025年AI发展趋势",
+    "整理关键趋势列表",
+    "为每个趋势添加详细描述",
+    "生成最终报告",
   ],
   currentStep: 0,
-}
+};
 ```
 
 ## 实战：构建代码审查Agent
 
 ```typescript
-import { Agent } from './agent'
+import { Agent } from "./agent";
 
 const codeReviewAgent = new Agent({
-  name: 'CodeReviewer',
-  tools: [
-    readFileTool,
-    analyzeCodeTool,
-    suggestImprovementTool,
-  ],
+  name: "CodeReviewer",
+  tools: [readFileTool, analyzeCodeTool, suggestImprovementTool],
   systemPrompt: `你是一个专业的代码审查专家。
   请分析代码质量、安全性和性能问题，并提供改进建议。`,
-})
+});
 
 // 使用Agent审查代码
-const review = await codeReviewAgent.run(
-  '请审查这个React组件的代码质量'
-)
+const review = await codeReviewAgent.run("请审查这个React组件的代码质量");
 ```
 
 ## Agent开发的最佳实践

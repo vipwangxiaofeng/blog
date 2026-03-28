@@ -8,8 +8,6 @@ tags:
   - 效率工具
 ---
 
-# 如何用AI提升前端开发效率
-
 AI工具正在彻底改变前端开发的工作方式。本文分享我在实际项目中使用AI提升开发效率的经验。
 
 ## 代码生成：从手动到自动
@@ -22,18 +20,18 @@ GitHub Copilot是最流行的AI编程助手。以下是一些使用技巧：
 // 输入注释，Copilot自动生成代码
 // 创建一个响应式的用户列表组件
 interface User {
-  id: string
-  name: string
-  email: string
-  avatar: string
+  id: string;
+  name: string;
+  email: string;
+  avatar: string;
 }
 
 const UserList = () => {
-  const [users, setUsers] = useState<User[]>([])
-  const [loading, setLoading] = useState(true)
+  const [users, setUsers] = useState<User[]>([]);
+  const [loading, setLoading] = useState(true);
 
   // Copilot会自动补全fetch逻辑
-}
+};
 ```
 
 ### 使用Cursor进行智能重构
@@ -99,13 +97,13 @@ const UserCard = React.memo(({ user }: { user: User }) => {
 
 ## 实用AI工具推荐
 
-| 工具 | 用途 | 推荐指数 |
-|------|------|----------|
+| 工具           | 用途     | 推荐指数   |
+| -------------- | -------- | ---------- |
 | GitHub Copilot | 代码补全 | ⭐⭐⭐⭐⭐ |
-| Cursor | 智能IDE | ⭐⭐⭐⭐⭐ |
-| v0.dev | UI生成 | ⭐⭐⭐⭐ |
-| Claude | 代码审查 | ⭐⭐⭐⭐⭐ |
-| ChatGPT | 技术问答 | ⭐⭐⭐⭐ |
+| Cursor         | 智能IDE  | ⭐⭐⭐⭐⭐ |
+| v0.dev         | UI生成   | ⭐⭐⭐⭐   |
+| Claude         | 代码审查 | ⭐⭐⭐⭐⭐ |
+| ChatGPT        | 技术问答 | ⭐⭐⭐⭐   |
 
 ## 使用AI的最佳实践
 

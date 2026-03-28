@@ -20,7 +20,7 @@ async function copyCode() {
 
 <template>
   <div
-    class="code-block group my-6 rounded-lg overflow-hidden border border-slate-700/50 bg-[#161b22]"
+    class="code-block group my-6 rounded-lg overflow-hidden border border-slate-700/50 bg-[#161b22] whitespace-pre"
   >
     <div
       class="flex items-center justify-between px-4 py-2 border-b border-slate-700/50 bg-[#1c2128]"
@@ -66,7 +66,7 @@ async function copyCode() {
         {{ copied ? "已复制" : "复制" }}
       </button>
     </div>
-    <div class="overflow-x-auto">
+    <div class="overflow-x-auto text-white">
       <slot />
     </div>
   </div>

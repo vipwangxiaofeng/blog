@@ -8,9 +8,7 @@ tags:
   - 趋势
 ---
 
-# 2025年AI发展趋势：从大模型到智能体
-
-人工智能正在以前所未有的速度改变我们的世界。2025年，AI技术迎来了新的转折点，从单纯的大语言模型迈向更智能的AI Agent时代。
+人工智能正在以前所前所未有的速度改变我们的世界。2025年，AI技术迎来了新的转折点，从单纯的大语言模型迈向更智能的AI Agent时代。
 
 ## 大语言模型的演进
 
@@ -31,20 +29,21 @@ tags:
 // AI Agent 的核心概念
 interface AIAgent {
   // 能够理解用户意图
-  understand(intent: string): Task
+  understand(intent: string): Task;
 
   // 规划执行步骤
-  plan(task: Task): Step[]
+  plan(task: Task): Step[];
 
   // 使用工具完成任务
-  execute(step: Step): Result
+  execute(step: Step): Result;
 
   // 从反馈中学习
-  learn(feedback: Feedback): void
+  learn(feedback: Feedback): void;
 }
 ```
 
 AI Agent 不再只是回答问题，而是能够：
+
 - 自动编写和运行代码
 - 浏览网页获取信息
 - 操作文件系统
@@ -54,12 +53,12 @@ AI Agent 不再只是回答问题，而是能够：
 
 多模态AI让机器能够同时理解：
 
-| 模态 | 应用场景 |
-|------|----------|
+| 模态 | 应用场景         |
+| ---- | ---------------- |
 | 文本 | 对话、写作、翻译 |
 | 图像 | 识别、生成、编辑 |
-| 音频 | 语音识别、合成 |
-| 视频 | 内容理解、生成 |
+| 音频 | 语音识别、合成   |
+| 视频 | 内容理解、生成   |
 
 ## AI对开发者的影响
 
