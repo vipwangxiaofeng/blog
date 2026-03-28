@@ -1,0 +1,51 @@
+{
+  "site": {
+    "title": "我的博客",
+    "subtitle": "前端开发与AI技术分享",
+    "description": "分享前端开发、人工智能和技术生活的个人博客",
+    "url": "https://yourusername.github.io"
+  },
+  "author": {
+    "name": "你的名字",
+    "title": "全栈开发者 / AI爱好者",
+    "bio": "你好！我是一名热爱技术的全栈开发者。这个博客是我分享技术心得、AI见解和编程经验的地方。希望通过我的文章，能帮助更多人了解前端开发和人工智能的最新动态。",
+    "avatar": "👨‍💻",
+    "skills": [
+      "Vue",
+      "TypeScript",
+      "React",
+      "Node.js",
+      "Tailwind CSS",
+      "Nuxt",
+      "Python",
+      "AI/ML"
+    ],
+    "social": {
+      "github": "https://github.com/yourusername",
+      "email": "you@example.com"
+    }
+  },
+  "nav": [
+    { "name": "首页", "path": "/" },
+    { "name": "博客", "path": "/blog" },
+    { "name": "关于", "path": "/about" }
+  ],
+  "topics": [
+    {
+      "title": "前端开发",
+      "description": "Vue、React、TypeScript等现代前端技术的实践经验"
+    },
+    {
+      "title": "人工智能",
+      "description": "AI大模型、Agent、Prompt Engineering等前沿技术分享"
+    },
+    {
+      "title": "效率工具",
+      "description": "提升开发效率的工具和方法论"
+    },
+    {
+      "title": "开源项目",
+      "description": "优秀的开源项目推荐和使用心得"
+    }
+  ]
+}

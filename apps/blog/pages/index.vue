@@ -1,17 +1,23 @@
 <script setup lang="ts">
-const { data: posts } = await useAsyncData('recent-posts', () =>
-  queryContent('blog').sort({ date: -1 }).limit(3).find()
-)
+import siteConfig from "~/site.config.json";
+
+const { data: posts } = await useAsyncData("recent-posts", () =>
+  queryContent("blog").sort({ date: -1 }).limit(3).find(),
+);
 </script>
 
 <template>
   <div class="container mx-auto px-4 py-12">
-    <section class="flex flex-col items-center justify-center space-y-4 text-center py-20">
-      <h1 class="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-        欢迎来到我的博客
+    <section
+      class="flex flex-col items-center justify-center space-y-4 text-center py-20"
+    >
+      <h1
+        class="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl"
+      >
+        欢迎来到{{ siteConfig.site.title }}
       </h1>
       <p class="mx-auto max-w-[700px] text-lg text-muted-foreground md:text-xl">
-        分享前端开发、人工智能和技术生活。记录学习路上的点点滴滴。
+        {{ siteConfig.site.description }}
       </p>
       <div class="space-x-4">
         <UiButton as-child>
@@ -31,24 +37,37 @@ const { data: posts } = await useAsyncData('recent-posts', () =>
         </div>
       </div>
       <div v-else class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <UiCard v-for="post in posts" :key="post._path" class="hover:shadow-lg transition-shadow">
+        <UiCard
+          v-for="post in posts"
+          :key="post._path"
+          class="hover:shadow-lg transition-shadow"
+        >
           <UiCardHeader>
             <UiCardTitle class="line-clamp-1">{{ post.title }}</UiCardTitle>
-            <UiCardDescription class="line-clamp-2">{{ post.description }}</UiCardDescription>
+            <UiCardDescription class="line-clamp-2">{{
+              post.description
+            }}</UiCardDescription>
           </UiCardHeader>
           <UiCardContent>
             <div class="flex items-center gap-2 text-sm text-muted-foreground">
               <time>{{ post.date }}</time>
               <span>·</span>
               <div class="flex gap-1">
-                <UiBadge v-for="tag in (post.tags || []).slice(0, 2)" :key="tag" variant="secondary">
+                <UiBadge
+                  v-for="tag in (post.tags || []).slice(0, 2)"
+                  :key="tag"
+                  variant="secondary"
+                >
                   {{ tag }}
                 </UiBadge>
               </div>
             </div>
           </UiCardContent>
           <div class="p-6 pt-0">
-            <NuxtLink :to="post._path" class="text-sm text-primary hover:underline">
+            <NuxtLink
+              :to="post._path"
+              class="text-sm text-primary hover:underline"
+            >
               阅读更多 →
             </NuxtLink>
           </div>
