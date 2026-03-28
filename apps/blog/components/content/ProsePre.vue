@@ -80,6 +80,9 @@ async function copyCode() {
   border-radius: 0 !important;
   font-size: 0.875rem !important;
   line-height: 1.7 !important;
+  white-space: pre !important;
+  overflow-x: auto !important;
+  word-wrap: normal !important;
 }
 
 .code-block pre code {
@@ -87,5 +90,6 @@ async function copyCode() {
   border: none !important;
   padding: 0 !important;
   font-size: inherit !important;
+  white-space: pre !important;
 }
 </style>
