@@ -8,23 +8,23 @@ const { data: posts } = await useAsyncData('recent-posts', () =>
   <div class="container mx-auto px-4 py-12">
     <section class="flex flex-col items-center justify-center space-y-4 text-center py-20">
       <h1 class="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-        Welcome to My Blog
+        欢迎来到我的博客
       </h1>
       <p class="mx-auto max-w-[700px] text-lg text-muted-foreground md:text-xl">
-        I write about web development, technology, and things I find interesting.
+        分享前端开发、人工智能和技术生活。记录学习路上的点点滴滴。
       </p>
       <div class="space-x-4">
         <UiButton as-child>
-          <NuxtLink to="/blog">Read Blog</NuxtLink>
+          <NuxtLink to="/blog">阅读博客</NuxtLink>
         </UiButton>
         <UiButton variant="outline" as-child>
-          <NuxtLink to="/about">About Me</NuxtLink>
+          <NuxtLink to="/about">关于我</NuxtLink>
         </UiButton>
       </div>
     </section>
 
     <section class="py-12">
-      <h2 class="text-2xl font-bold tracking-tight mb-6">Recent Posts</h2>
+      <h2 class="text-2xl font-bold tracking-tight mb-6">最新文章</h2>
       <div v-if="!posts" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         <div v-for="i in 3" :key="i" class="animate-pulse">
           <div class="h-48 rounded-lg bg-muted" />
@@ -49,7 +49,7 @@ const { data: posts } = await useAsyncData('recent-posts', () =>
           </UiCardContent>
           <div class="p-6 pt-0">
             <NuxtLink :to="post._path" class="text-sm text-primary hover:underline">
-              Read more →
+              阅读更多 →
             </NuxtLink>
           </div>
         </UiCard>

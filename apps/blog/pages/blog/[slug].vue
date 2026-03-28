@@ -10,16 +10,16 @@ const slug = route.params.slug as string
         <template #not-found>
           <div class="text-center py-20">
             <h1 class="text-4xl font-bold mb-4">404</h1>
-            <p class="text-muted-foreground mb-8">Post not found.</p>
+            <p class="text-muted-foreground mb-8">文章不存在</p>
             <UiButton as-child>
-              <NuxtLink to="/blog">Back to Blog</NuxtLink>
+              <NuxtLink to="/blog">返回博客列表</NuxtLink>
             </UiButton>
           </div>
         </template>
         <template #default="{ doc }">
           <div class="mb-8">
             <NuxtLink to="/blog" class="text-sm text-muted-foreground hover:text-foreground">
-              ← Back to Blog
+              ← 返回博客列表
             </NuxtLink>
           </div>
           <header class="mb-8">

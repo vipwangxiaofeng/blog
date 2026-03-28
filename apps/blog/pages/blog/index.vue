@@ -10,7 +10,7 @@ watch(posts, (value) => {
     blogStore.setPosts(
       value.map((p) => ({
         slug: p._path?.replace('/blog/', '') ?? '',
-        title: p.title ?? 'Untitled',
+        title: p.title ?? '无标题',
         description: p.description ?? '',
         date: p.date ?? '',
         tags: p.tags ?? [],
@@ -23,8 +23,8 @@ watch(posts, (value) => {
 <template>
   <div class="container mx-auto px-4 py-12">
     <div class="flex flex-col space-y-4 mb-8">
-      <h1 class="text-3xl font-bold tracking-tight">Blog</h1>
-      <p class="text-muted-foreground">Thoughts, ideas, and tutorials about web development.</p>
+      <h1 class="text-3xl font-bold tracking-tight">博客</h1>
+      <p class="text-muted-foreground">关于前端开发、人工智能和技术生活的思考与分享。</p>
     </div>
 
     <div class="flex flex-col md:flex-row gap-6">
@@ -33,18 +33,18 @@ watch(posts, (value) => {
           <input
             v-model="blogStore.searchQuery"
             type="text"
-            placeholder="Search posts..."
+            placeholder="搜索文章..."
             class="w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           />
           <div>
-            <h3 class="mb-2 text-sm font-semibold">Tags</h3>
+            <h3 class="mb-2 text-sm font-semibold">标签</h3>
             <div class="flex flex-wrap gap-2">
               <UiBadge
                 :variant="blogStore.selectedTag === '' ? 'default' : 'outline'"
                 class="cursor-pointer"
                 @click="blogStore.setTag('')"
               >
-                All
+                全部
               </UiBadge>
               <UiBadge
                 v-for="tag in blogStore.allTags"
@@ -69,7 +69,7 @@ watch(posts, (value) => {
           </div>
         </div>
         <div v-else-if="blogStore.filteredPosts.length === 0" class="text-center py-12 text-muted-foreground">
-          No posts found.
+          没有找到相关文章
         </div>
         <div v-else class="space-y-6">
           <NuxtLink
