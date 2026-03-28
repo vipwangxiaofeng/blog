@@ -20,19 +20,17 @@ async function copyCode() {
 
 <template>
   <div
-    class="code-block group my-6 rounded-xl overflow-hidden border border-border/50"
+    class="code-block group my-6 rounded-lg overflow-hidden border border-slate-700/50 bg-[#161b22]"
   >
     <div
-      class="flex items-center justify-between px-4 py-2 border-b border-border/50 bg-muted/50"
+      class="flex items-center justify-between px-4 py-2 border-b border-slate-700/50 bg-[#1c2128]"
     >
-      <span
-        v-if="language"
-        class="text-xs text-muted-foreground uppercase font-medium"
-        >{{ language }}</span
-      >
-      <span v-else class="text-xs text-muted-foreground">代码</span>
+      <span v-if="language" class="text-xs text-slate-400 font-mono">{{
+        language
+      }}</span>
+      <span v-else class="text-xs text-slate-500">plaintext</span>
       <button
-        class="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs text-muted-foreground hover:text-foreground hover:bg-muted transition-all"
+        class="flex items-center gap-1.5 px-2 py-1 rounded text-xs text-slate-400 hover:text-slate-200 hover:bg-slate-700/50 transition-all"
         @click="copyCode"
       >
         <svg
@@ -53,7 +51,7 @@ async function copyCode() {
         <svg
           v-else
           xmlns="http://www.w3.org/2000/svg"
-          class="h-3.5 w-3.5 text-green-500"
+          class="h-3.5 w-3.5 text-emerald-400"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -68,7 +66,7 @@ async function copyCode() {
         {{ copied ? "已复制" : "复制" }}
       </button>
     </div>
-    <div class="overflow-x-auto bg-[#0d1117]">
+    <div class="overflow-x-auto">
       <slot />
     </div>
   </div>
@@ -77,8 +75,17 @@ async function copyCode() {
 <style>
 .code-block pre {
   margin: 0 !important;
-  padding: 1rem !important;
-  background: transparent !important;
+  padding: 1rem 1.25rem !important;
+  background: #161b22 !important;
   border-radius: 0 !important;
+  font-size: 0.875rem !important;
+  line-height: 1.7 !important;
+}
+
+.code-block pre code {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  font-size: inherit !important;
 }
 </style>
