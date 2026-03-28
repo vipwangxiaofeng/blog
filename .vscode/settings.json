@@ -1,0 +1,13 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "vue.inlayHints.ignoreSfcStyleLangs": [],
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`][\"'`].*?[\"'`]"],
+    ["cn\\(([^)]*)\\)", "[\"'`][\"'`].*?[\"'`]"]
+  ]
+}

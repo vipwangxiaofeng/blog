@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "Vue.volar",
+    "antfu.vite",
+    "bradlc.vscode-tailwindcss",
+    "esbenp.prettier-vscode"
+  ]
+}
