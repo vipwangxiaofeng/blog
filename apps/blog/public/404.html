@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>我的博客 - 前端开发与AI技术分享</title>
+    <script>
+      // 单页应用路由处理
+      // 将当前路径存储到 sessionStorage，然后重定向到首页
+      var currentPath = window.location.pathname;
+      var currentSearch = window.location.search;
+      var currentHash = window.location.hash;
+
+      // 构建完整的 URL
+      var fullUrl = currentPath + currentSearch + currentHash;
+
+      // 存储原始 URL
+      sessionStorage.setItem("redirectUrl", fullUrl);
+
+      // 重定向到首页
+      window.location.href = "/";
+    </script>
+  </head>
+  <body>
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
+      "
+    >
+      <div style="text-align: center">
+        <h1 style="font-size: 2rem; margin-bottom: 1rem">正在加载...</h1>
+        <p style="color: #666">页面正在重定向，请稍候...</p>
+      </div>
+    </div>
+  </body>
+</html>

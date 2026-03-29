@@ -1,5 +1,19 @@
 <script setup lang="ts">
 import siteConfig from "~/site.config.json";
+
+// 处理 GitHub Pages 重定向
+const router = useRouter();
+
+onMounted(() => {
+  // 检查是否有存储的重定向 URL
+  const redirectUrl = sessionStorage.getItem("redirectUrl");
+  if (redirectUrl) {
+    // 清除存储的 URL
+    sessionStorage.removeItem("redirectUrl");
+    // 导航到原始 URL
+    router.push(redirectUrl);
+  }
+});
 </script>
 
 <template>
