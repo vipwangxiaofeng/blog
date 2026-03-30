@@ -7,9 +7,6 @@
     <script>
       // GitHub Pages SPA 路由回退
       // 将当前路径存储到 sessionStorage，然后重定向到首页
-      var pathSegmentsToKeep = 0;
-
-      // 重定向到首页，同时保留原始路径信息
       var l = window.location;
       // 存储原始 URL 到 sessionStorage
       sessionStorage.setItem(
@@ -18,15 +15,7 @@
       );
       // 重定向到首页
       l.replace(
-        l.protocol +
-          "//" +
-          l.hostname +
-          (l.port ? ":" + l.port : "") +
-          l.pathname
-            .split("/")
-            .slice(0, 1 + pathSegmentsToKeep)
-            .join("/") +
-          "/?r=1",
+        l.protocol + "//" + l.hostname + (l.port ? ":" + l.port : "") + "/?r=1",
       );
     </script>
   </head>
