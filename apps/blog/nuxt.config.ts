@@ -28,4 +28,13 @@ export default defineNuxtConfig({
   tailwindcss: {
     cssPath: "~/assets/css/tailwind.css",
   },
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ["/", "/about", "/blog"],
+    },
+  },
+  experimental: {
+    payloadExtraction: true,
+  },
 });
