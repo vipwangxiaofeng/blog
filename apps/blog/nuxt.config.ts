@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt", "@nuxt/content"],
   app: {
-    baseURL: "/",
+    baseURL: "/blog/",
     head: {
       title: "我的博客 - 前端开发与AI技术分享",
       htmlAttrs: {
