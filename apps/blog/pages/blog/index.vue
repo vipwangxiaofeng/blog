@@ -1,30 +1,36 @@
 <script setup lang="ts">
-const blogStore = useBlogStore()
+const blogStore = useBlogStore();
 
-const { data: posts } = await useAsyncData('all-posts', () =>
-  queryContent('blog').sort({ date: -1 }).find()
-)
+const { data: posts } = await useAsyncData("all-posts", () =>
+  queryContent("blog").sort({ date: -1 }).find(),
+);
 
-watch(posts, (value) => {
-  if (value) {
-    blogStore.setPosts(
-      value.map((p) => ({
-        slug: p._path?.replace('/blog/', '') ?? '',
-        title: p.title ?? '无标题',
-        description: p.description ?? '',
-        date: p.date ?? '',
-        tags: p.tags ?? [],
-      }))
-    )
-  }
-}, { immediate: true })
+watch(
+  posts,
+  (value) => {
+    if (value) {
+      blogStore.setPosts(
+        value.map((p) => ({
+          slug: p._path?.replace("/blog/", "") ?? "",
+          title: p.title ?? "无标题",
+          description: p.description ?? "",
+          date: String(p.date ?? ""),
+          tags: [...(p.tags ?? [])],
+        })),
+      );
+    }
+  },
+  { immediate: true },
+);
 </script>
 
 <template>
   <div class="container mx-auto px-4 py-12">
     <div class="flex flex-col space-y-4 mb-8">
       <h1 class="text-3xl font-bold tracking-tight">博客</h1>
-      <p class="text-muted-foreground">关于前端开发、人工智能和技术生活的思考与分享。</p>
+      <p class="text-muted-foreground">
+        关于前端开发、人工智能和技术生活的思考与分享。
+      </p>
     </div>
 
     <div class="flex flex-col md:flex-row gap-6">
@@ -62,13 +68,20 @@ watch(posts, (value) => {
 
       <div class="flex-1">
         <div v-if="!posts" class="space-y-6">
-          <div v-for="i in 3" :key="i" class="animate-pulse rounded-lg border p-6">
+          <div
+            v-for="i in 3"
+            :key="i"
+            class="animate-pulse rounded-lg border p-6"
+          >
             <div class="h-6 w-3/4 bg-muted rounded mb-2" />
             <div class="h-4 w-full bg-muted rounded mb-4" />
             <div class="h-4 w-1/4 bg-muted rounded" />
           </div>
         </div>
-        <div v-else-if="blogStore.filteredPosts.length === 0" class="text-center py-12 text-muted-foreground">
+        <div
+          v-else-if="blogStore.filteredPosts.length === 0"
+          class="text-center py-12 text-muted-foreground"
+        >
           没有找到相关文章
         </div>
         <div v-else class="space-y-6">
@@ -80,7 +93,9 @@ watch(posts, (value) => {
           >
             <UiCard class="hover:shadow-md transition-shadow">
               <UiCardHeader>
-                <div class="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                <div
+                  class="flex items-center gap-2 text-sm text-muted-foreground mb-2"
+                >
                   <time>{{ post.date }}</time>
                 </div>
                 <UiCardTitle class="group-hover:text-primary transition-colors">
@@ -90,7 +105,11 @@ watch(posts, (value) => {
               </UiCardHeader>
               <UiCardContent>
                 <div class="flex gap-2">
-                  <UiBadge v-for="tag in post.tags" :key="tag" variant="secondary">
+                  <UiBadge
+                    v-for="tag in post.tags"
+                    :key="tag"
+                    variant="secondary"
+                  >
                     {{ tag }}
                   </UiBadge>
                 </div>
