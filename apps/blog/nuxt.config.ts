@@ -1,7 +1,9 @@
+import tailwindcss from "@tailwindcss/vite";
+
 export default defineNuxtConfig({
   compatibilityDate: "2025-01-01",
   devtools: { enabled: true },
-  modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt", "@nuxt/content"],
+  modules: ["@pinia/nuxt", "@nuxt/content"],
   app: {
     baseURL: "/blog/",
     head: {
@@ -25,8 +27,9 @@ export default defineNuxtConfig({
       theme: "github-dark",
     },
   },
-  tailwindcss: {
-    cssPath: "~/assets/css/tailwind.css",
+  css: ["~/assets/css/tailwind.css"],
+  vite: {
+    plugins: [tailwindcss()],
   },
   nitro: {
     prerender: {
